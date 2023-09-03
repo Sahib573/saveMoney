@@ -3,8 +3,8 @@ import { lazy } from 'react';
 const ECommerce = lazy(() => import('../pages/Dashboard/ECommerce'));
 const Transaction = lazy(() => import('../pages/Transaction'));
 const About = lazy(() => import('../pages/About'));
-// const FormElements = lazy(() => import('../pages/Form/FormElements'));
-// const FormLayout = lazy(() => import('../pages/Form/FormLayout'));
+const FormElements = lazy(() => import('../pages/Form/FormElements'));
+const FormLayout = lazy(() => import('../pages/Form/FormLayout'));
 const Profile = lazy(() => import('../pages/Profile'));
 const Settings = lazy(() => import('../pages/Settings'));
 const Activities = lazy(() => import('../pages/Activities'));
@@ -27,16 +27,16 @@ const coreRoutes = [
     title: 'Profile',
     component: Profile,
   },
-  // {
-  //   path: '/forms/form-elements',
-  //   title: 'Forms Elements',
-  //   component: FormElements,
-  // },
-  // {
-  //   path: '/forms/form-layout',
-  //   title: 'Form Layouts',
-  //   component: FormLayout,
-  // },
+  {
+    path: '/forms/form-elements',
+    title: 'Forms Elements',
+    component: FormElements,
+  },
+  {
+    path: '/forms/form-layout',
+    title: 'Form Layouts',
+    component: FormLayout,
+  },
   {
     path: '/activities',
     title: 'Activities',

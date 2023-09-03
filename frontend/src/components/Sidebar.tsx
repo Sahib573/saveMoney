@@ -139,7 +139,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/ecommerce"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:bg-opacity-10 hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
                     (pathname === "/" || pathname.includes("dashboard")) &&
                     "dark:bg-meta-4"
                   }`}
