@@ -23,7 +23,7 @@ const options: ApexOptions = {
       options: {
         plotOptions: {
           bar: {
-            borderRadius: 0,
+            borderRadius: "20px",
             columnWidth: '25%',
           },
         },
@@ -34,7 +34,7 @@ const options: ApexOptions = {
     bar: {
       horizontal: false,
       borderRadius: 0,
-      columnWidth: '25%',
+      columnWidth: '35%',
       borderRadiusApplication: 'end',
       borderRadiusWhenStacked: 'last',
     },
