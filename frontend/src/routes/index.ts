@@ -5,6 +5,7 @@ const Transaction = lazy(() => import('../pages/Transaction'));
 const About = lazy(() => import('../pages/About'));
 const FormElements = lazy(() => import('../pages/Form/FormElements'));
 const FormLayout = lazy(() => import('../pages/Form/FormLayout'));
+const Groups = lazy(() => import('../pages/Groups'));
 const Profile = lazy(() => import('../pages/Profile'));
 const Settings = lazy(() => import('../pages/Settings'));
 const Activities = lazy(() => import('../pages/Activities'));
@@ -26,6 +27,11 @@ const coreRoutes = [
     path: '/profile',
     title: 'Profile',
     component: Profile,
+  },
+  {
+    path: '/groups',
+    title: 'Groups',
+    component: Groups,
   },
   {
     path: '/forms/form-elements',

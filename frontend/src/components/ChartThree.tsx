@@ -10,9 +10,7 @@ const options: ApexOptions = {
   chart: {
     height: 600,
     type: "radialBar",
-    toolbar: {
-      show: true
-    }
+
   },
   plotOptions: {
     radialBar: {
