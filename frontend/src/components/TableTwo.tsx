@@ -3,8 +3,9 @@ import ProductTwo from "../images/product/product-02.png";
 import ProductThree from "../images/product/product-03.png";
 import ProductFour from "../images/product/product-04.png";
 import edit from "../images/icon/edit.png";
+import { Props } from "react-apexcharts";
 
-const TableTwo = (props) => {
+const TableTwo = (props: Props) => {
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="py-6 px-4 md:px-6 xl:px-7.5">

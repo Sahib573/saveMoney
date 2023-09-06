@@ -10,6 +10,7 @@ const Settings = lazy(() => import('../pages/Settings'));
 const Activities = lazy(() => import('../pages/Activities'));
 const Alerts = lazy(() => import('../pages/UiElements/Alerts'));
 const Buttons = lazy(() => import('../pages/UiElements/Buttons'));
+const AddTransaction = lazy(() => import('../pages/AddTransaction'));
 
 const coreRoutes = [
   {
@@ -61,6 +62,11 @@ const coreRoutes = [
     path: '/ui/buttons',
     title: 'Buttons',
     component: Buttons,
+  }, 
+  {
+    path: '/addTransaction',
+    title: 'AddTransaction',
+    component: AddTransaction,
   },
 ];
 

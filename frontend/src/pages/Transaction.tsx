@@ -12,7 +12,9 @@ const Transactions = () => {
       <div className="flex flex-col gap-10">
         <div className="flex flex-wrap gap-5 xl:gap-7.5">
           <Link
-            to="#"
+            // ref={trigger}
+            // onClick={() => setaddOpen(!addOpen)}
+            to="/addTransaction"
             className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#5B39CF] py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
           >
             <img src={add} className="h-5 w-5" alt="" />
@@ -38,6 +40,7 @@ const Transactions = () => {
                 </defs>
               </svg>
             </span> */}
+            {/* {addOpen && <AddTransaction />} */}
             Add Transaction
           </Link>
         </div>
