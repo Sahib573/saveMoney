@@ -20,7 +20,7 @@ const GroupCard: React.FC<GroupCardProps> = ({
     };
 
     return (
-        <div className="max-w-sm rounded overflow-hidden border-2 shadow-lg bg-[#F0F8FF] text-blue-900">
+        <div className="max-w-sm rounded overflow-hidden border-b border-[#514644] shadow-lg bg-[#efc8b1]">
             <div className="px-6 py-4">
                 <div className="flex justify-between">
                     <div
@@ -31,7 +31,7 @@ const GroupCard: React.FC<GroupCardProps> = ({
                     </div>
                     <button
                         onClick={toggleCard}
-                        className="float-right rounded-full bg-black text-white p-2 hover:bg-yellow transition-colors duration-300 ease-in-out"
+                        className="float-right rounded-full bg-[#514644] text-white p-2 hover:bg-yellow transition-colors duration-300 ease-in-out"
                     >
                         {isOpen ? 'Show Less ↑' : 'Show More ↓'}
                     </button>
@@ -49,8 +49,9 @@ const GroupCard: React.FC<GroupCardProps> = ({
                             const isOwing = amountOwed > 0;
 
                             return (
-                                <li key={index} className={`text-base ${isOwing ? 'text-green-500' : 'text-red-500'}`}>
-                                    {member} - {isOwing ? 'Owes You' : 'You Owe'}: ${Math.abs(amountOwed).toFixed(2)}
+                                <li key={index} className="text-lg">
+                                    {member}<p className={`text-base ${isOwing ? 'text-green' : 'text-red'}`}>{isOwing ? 'Owes You' : 'You Owe'}: ${Math.abs(amountOwed).toFixed(2)}</p>
+
                                 </li>
                             );
                         })}
