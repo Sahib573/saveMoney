@@ -259,7 +259,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* <!-- Menu Item Tables --> */}
               <li>
                 <NavLink
-                  to="/activities"
+                  to="/analytics"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
                     pathname.includes("tables") && "dark:bg-meta-4"
                   }`}
@@ -289,7 +289,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       </clipPath>
                     </defs>
                   </svg>
-                  Activities
+                  Analytics
                 </NavLink>
               </li>
               {/* <!-- Menu Item Tables --> */}

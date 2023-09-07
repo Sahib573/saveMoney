@@ -7,7 +7,7 @@ const FormElements = lazy(() => import('../pages/Form/FormElements'));
 const FormLayout = lazy(() => import('../pages/Form/FormLayout'));
 const Profile = lazy(() => import('../pages/Profile'));
 const Settings = lazy(() => import('../pages/Settings'));
-const Activities = lazy(() => import('../pages/Activities'));
+const Analytics = lazy(() => import('../pages/Analytics'));
 const Alerts = lazy(() => import('../pages/UiElements/Alerts'));
 const Buttons = lazy(() => import('../pages/UiElements/Buttons'));
 const AddTransaction = lazy(() => import('../pages/AddTransaction'));
@@ -39,9 +39,9 @@ const coreRoutes = [
     component: FormLayout,
   },
   {
-    path: '/activities',
-    title: 'Activities',
-    component: Activities,
+    path: '/analytics',
+    title: 'Analytics',
+    component: Analytics,
   },
   {
     path: '/settings',
