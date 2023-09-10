@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Logo from "../images/logo2/default.png";
 import SidebarLinkGroup from "./SidebarLinkGroup";
+import ReactTyped from "react-typed";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -54,6 +55,19 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       document.querySelector("body")?.classList.remove("sidebar-expanded");
     }
   }, [sidebarExpanded]);
+  const [email, setEmail] = useState('');
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    console.log('Email to send to the backend:', email);
+
+    setEmail('');
+  };
 
   return (
     <aside
@@ -138,7 +152,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/ecommerce"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:bg-opacity-10 hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${(pathname === "/" || pathname.includes("dashboard")) &&
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:bg-opacity-10 hover:border-white-500 hover:border-b dark:hover:bg-meta-4 ${(pathname === "/" || pathname.includes("dashboard")) &&
                     "dark:bg-meta-4"
                     }`}
                 // onClick={(e) => {
@@ -198,7 +212,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/transaction"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${pathname.includes("calendar") && "dark:bg-meta-4"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-b dark:hover:bg-meta-4 ${pathname.includes("calendar") && "dark:bg-meta-4"
                     }`}
                 >
                   <svg
@@ -223,7 +237,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/profile"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${pathname.includes("profile") && "dark:bg-meta-4"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-b dark:hover:bg-meta-4 ${pathname.includes("profile") && "dark:bg-meta-4"
                     }`}
                 >
                   <svg
@@ -252,7 +266,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/groups"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${pathname.includes("groups") && "dark:bg-meta-4"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-b dark:hover:bg-meta-4 ${pathname.includes("groups") && "dark:bg-meta-4"
                     }`}
                 >
                   <svg fill="#ffffff" height="20px" width="20px" version="1.1" id="Layer_1"
@@ -272,7 +286,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/activities"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${pathname.includes("tables") && "dark:bg-meta-4"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-b dark:hover:bg-meta-4 ${pathname.includes("tables") && "dark:bg-meta-4"
                     }`}
                 >
                   <svg
@@ -309,7 +323,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/settings"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${pathname.includes("settings") && "dark:bg-meta-4"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-b dark:hover:bg-meta-4 ${pathname.includes("settings") && "dark:bg-meta-4"
                     }`}
                 >
                   <svg
@@ -354,12 +368,12 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               OTHERS
             </h3>
 
-            <ul className="mb-6 flex flex-col gap-1.5">
+            <ul className="mb-6 flex flex-col gap-6">
               {/* <!-- Menu Item Chart --> */}
               <li>
                 <NavLink
                   to="/aboutUs"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${pathname.includes("chart") && "dark:bg-meta-4"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-b dark:hover:bg-meta-4 ${pathname.includes("chart") && "dark:bg-meta-4"
                     }`}
                 >
                   <svg
@@ -394,11 +408,65 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   About Us
                 </NavLink>
               </li>
+              <li>
+
+
+                <div>
+                  <h1 className="italic text-[#ADCF39]">
+                    <ReactTyped strings={["Let each spend Become a Trend!!!"]} typeSpeed={100} loop />
+                  </h1>
+
+                  {/* <form>
+                    <div className="mb-6">
+
+                      <input type="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block py-2 px-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="friendsEmail@mail.com" required />
+                    </div>
+                    <button type="submit" className="text-white bg-black hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                  </form> */}
+                  <form onSubmit={handleSubmit}>
+                    <div className="mb-4 flex items-center">
+                      <input type="email"
+                        id="emailInput"
+                        value={email}
+                        onChange={handleEmailChange}
+                        placeholder="friendsMail@gmail.com"
+                        className="w-full h-8 rounded-lg p-2 bg-transparent	border" />
+                      <button type="submit" className="ml-2 h-8 rounded-lg bg-[#ADCF39] p-1 text-[#5B39CF] hover:bg-blue">Invite!</button>
+                    </div>
+                  </form>
+                  {/* <div>
+                    <form onSubmit={handleSubmit}>
+                      <div className="w-full">
+                        <h4 className="mb-1 text-xl font-bold text-dark">
+                          Email Address
+                        </h4>
+                        <p className="text-base text-body-color">
+                          info@yourdomain.com
+                        </p>
+                      </div>
+                      <button
+                        type="submit"
+                        className="w-full p-3 text-white transition border rounded border-primary bg-primary hover:bg-opacity-90"
+                      >
+                        Send Message
+                      </button>
+                      <input
+                        type="email"
+                        id="emailInput"
+                        value={email}
+                        onChange={handleEmailChange}
+                        placeholder="friendsMail@gmail.com"
+                      />
+                      <button type="submit">Invite!</button>
+                    </form>
+                  </div> */}
+                </div>
+              </li>
             </ul>
           </div>
         </nav>
-      </div>
-    </aside>
+      </div >
+    </aside >
   );
 };
 
