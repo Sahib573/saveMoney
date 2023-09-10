@@ -7,7 +7,7 @@ import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
 import Loader from './common/Loader';
 import routes from './routes';
-import Sidebar from '../components/Sidebar';
+import Sidebar from './components/Sidebar';
 
 
 const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
@@ -23,8 +23,8 @@ function App() {
     <Loader />
   ) : (
     <>
-    <Toaster position='top-right' containerClassName='overflow-auto'/>
-  
+      <Toaster position='top-right' containerClassName='overflow-auto' />
+
       <Routes>
         <Route path="/auth/signin" element={<SignIn />} />
         <Route path="/auth/signup" element={<SignUp />} />
@@ -32,7 +32,7 @@ function App() {
           {/* <Route index element={<ECommerce />} /> */}
           {routes.map(({ path, component: Component }) => (
             <Route
-            key={path}
+              key={path}
               path={path}
               element={
                 <Suspense fallback={<Loader />}>

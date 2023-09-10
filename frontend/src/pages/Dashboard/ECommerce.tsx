@@ -2,6 +2,7 @@ import CardFour from "../../components/CardFour.tsx";
 import CardOne from "../../components/CardOne.tsx";
 import ColumnChart from "../../components/ColumnChart.tsx";
 import ChartFive from "../../components/ChartFive.tsx";
+import SettleUpSection from "./SettleUp.tsx";
 import CardTwo from "../../components/CardTwo.tsx";
 import ChartOne from "../../components/ChartOne.tsx";
 import ChartThree from "../../components/ChartThree.tsx";
@@ -22,7 +23,9 @@ const ECommerce = () => {
         <CardTwo />
         <CardThree />
         <CardFour />
+        
       </div> */}
+      <SettleUpSection />
 
       <div className=" grid grid-cols-10 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
 

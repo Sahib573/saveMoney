@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Logo from "../images/logo2/default.png";
 import SidebarLinkGroup from "./SidebarLinkGroup";
+//@ts-expect-error
 import ReactTyped from "react-typed";
 
 interface SidebarProps {
