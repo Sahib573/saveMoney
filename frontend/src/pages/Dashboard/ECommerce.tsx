@@ -29,7 +29,7 @@ const ECommerce = () => {
         </div>
         <ChatCard />
       </div> */}
-      Dashboard hai ye bc
+      Dashboard hai ye bc <br /> Friend list should be cached , multiple uses
     </>
   );
 };

@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Logo from "../images/logo2/default.png";
 import SidebarLinkGroup from "./SidebarLinkGroup";
+import friendsSvg from "../images/logo2/friends.svg";
+import { Icons } from "react-toastify";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -139,7 +141,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/ecommerce"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:bg-opacity-10 hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-[#8D80EE] dark:hover:bg-meta-4 ${
                     (pathname === "/" || pathname.includes("dashboard")) &&
                     "dark:bg-meta-4"
                   }`}
@@ -200,7 +202,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/transaction"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-[#8D80EE] dark:hover:bg-meta-4 ${
                     pathname.includes("calendar") && "dark:bg-meta-4"
                   }`}
                 >
@@ -226,7 +228,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/profile"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-[#8D80EE] dark:hover:bg-meta-4 ${
                     pathname.includes("profile") && "dark:bg-meta-4"
                   }`}
                 >
@@ -260,7 +262,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/analytics"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-[#8D80EE] dark:hover:bg-meta-4 ${
                     pathname.includes("tables") && "dark:bg-meta-4"
                   }`}
                 >
@@ -298,7 +300,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/settings"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-[#8D80EE] dark:hover:bg-meta-4 ${
                     pathname.includes("settings") && "dark:bg-meta-4"
                   }`}
                 >
@@ -334,13 +336,46 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   Settings
                 </NavLink>
               </li>
+
+              {/* <!-- Friends --> */}
+
+              <li>
+                <NavLink
+                  to="/friends"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-[#8D80EE] dark:hover:bg-meta-4 ${
+                    pathname.includes("friends") && "dark:bg-meta-4"
+                  }`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    data-name="Layer 1"
+                    viewBox="0 0 64 64"
+                    id="Friendship"
+                    className="h-5 w-5"
+                  >
+                    <path
+                      d="M31.55,28.93c.14,.07,.3,.11,.45,.11s.31-.04,.45-.11c.37-.19,9.15-4.73,9.15-10.63,0-2.92-2.38-5.3-5.3-5.3-.66,0-1.3,.12-1.9,.36-.98,.38-1.81,1.03-2.4,1.86-.59-.82-1.41-1.48-2.39-1.85-.61-.24-1.25-.36-1.91-.36-2.92,0-5.3,2.38-5.3,5.3,0,5.9,8.77,10.44,9.15,10.63Zm-3.85-13.93c.41,0,.8,.08,1.19,.23,1.26,.48,2.11,1.72,2.11,3.07,0,.55,.45,1,1,1s1-.45,1-1c0-1.36,.85-2.59,2.12-3.08,.38-.15,.77-.22,1.18-.22,1.82,0,3.3,1.48,3.3,3.3,0,3.64-5.12,7.23-7.6,8.61-2.48-1.38-7.6-4.97-7.6-8.61,0-1.82,1.48-3.3,3.3-3.3Z"
+                      fill="#ffffff"
+                      className="color000000 svgShape"
+                    ></path>
+                    <path
+                      d="M52 19c-5.79 0-10.5 4.73-10.5 10.55v7.2c0 .69-.56 1.25-1.25 1.25h-4.1c-1.72 0-3.24.88-4.14 2.2-.9-1.33-2.42-2.2-4.14-2.2h-4.1c-.69 0-1.26-.56-1.26-1.25v-7.2c0-5.82-4.71-10.55-10.5-10.55S1.5 23.71 1.5 29.5V62c0 .55.45 1 1 1s1-.45 1-1V29.5c0-4.69 3.81-8.5 8.5-8.5s8.5 3.83 8.5 8.55v7.2c0 1.79 1.46 3.25 3.26 3.25h4.1c1.65 0 3 1.35 3 3s-1.35 3-3 3h-6.41c-4.38 0-7.95-3.56-7.95-7.95v-7.05c0-.55-.45-1-1-1s-1 .45-1 1v7.05c0 5.15 3.93 9.4 9 9.9v14.05c0 .55.45 1 1 1s1-.45 1-1v-14h5.36c1.72 0 3.24-.88 4.14-2.2.9 1.33 2.42 2.2 4.14 2.2h5.36v14c0 .55.45 1 1 1s1-.45 1-1v-14.05c5.04-.48 9-4.73 9-9.9v-7.05c0-.55-.45-1-1-1s-1 .45-1 1v7.05c0 4.38-3.56 7.95-8 7.95h-6.36c-1.65 0-3-1.35-3-3s1.35-3 3-3h4.1c1.79 0 3.25-1.46 3.25-3.25v-7.2c0-4.71 3.81-8.55 8.5-8.55s8.5 3.81 8.5 8.5V62c0 .55.45 1 1 1s1-.45 1-1V29.5c0-5.79-4.71-10.5-10.5-10.5zM51.5 17c4.41 0 8-3.59 8-8S55.91 1 51.5 1s-8 3.59-8 8 3.59 8 8 8zm0-14c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6zM12.5 17c4.41 0 8-3.59 8-8S16.91 1 12.5 1 4.5 4.59 4.5 9s3.59 8 8 8zm0-14c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6z"
+                      fill="#ffffff"
+                      className="color000000 svgShape"
+                    ></path>
+                  </svg>
+                  {/* <Icons src={friendsSvg} alt="" /> */}
+                  Friends
+                </NavLink>
+              </li>
+              {/* <!-- Friends --> */}
               {/* <!-- Menu Item Settings --> */}
             </ul>
           </div>
 
           {/* <!-- Others Group --> */}
           <div>
-            <h3 className="mb-4 ml-4 text-sm font-semibold text-bodydark2">
+            <h3 className="mb-4 ml-4 text-sm font-semibold text-white">
               OTHERS
             </h3>
 
@@ -349,7 +384,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <li>
                 <NavLink
                   to="/aboutUs"
-                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-[#8D80EE] dark:hover:bg-meta-4 ${
                     pathname.includes("chart") && "dark:bg-meta-4"
                   }`}
                 >
@@ -511,7 +546,7 @@ export default Sidebar;
 //                 <React.Fragment>
 //                   <NavLink
 //                     to="#"
-//                     className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
+//                     className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-[#8D80EE] dark:hover:bg-meta-4 ${
 //                       (pathname === '/ui' || pathname.includes('ui')) &&
 //                       'bg-graydark dark:bg-meta-4'
 //                     }`}
@@ -623,7 +658,7 @@ export default Sidebar;
 //                 <React.Fragment>
 //                   <NavLink
 //                     to="#"
-//                     className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:shadow-2xl	hover:shadow-inner hover:border-solid hover:border-white-500 hover:border-2 dark:hover:bg-meta-4 ${
+//                     className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-[#8D80EE] dark:hover:bg-meta-4 ${
 //                       (pathname === '/auth' || pathname.includes('auth')) &&
 //                       'bg-graydark dark:bg-meta-4'
 //                     }`}
