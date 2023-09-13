@@ -1,51 +1,66 @@
-import React, { useState } from "react";
-import Breadcrumb from "../../components/Breadcrumb";
+import React from "react";
 import { useParams } from "react-router-dom";
+import Breadcrumb from "../../components/Breadcrumb";
 import GroupDetailCard from "../../components/GroupDetailsCard";
 
+interface Member {
+    name: string;
+    amountOwed: number;
+}
+
+interface Expense {
+    description: string;
+    amount: number;
+}
+
 interface Group {
-    groupName: string;
+    name: string;
     totalExpenses: number;
-    members: string[];
-    amountsOwed: number[];
+    members: Member[];
+    expenses: Expense[];
 }
 
 const GroupDetail: React.FC = () => {
     const { groupName } = useParams<{ groupName: string }>();
 
-
     const groups: Group[] = [
         {
-            groupName: "Sunday Outing",
+            name: "Sunday Outing",
             totalExpenses: 1500,
-            members: ["Sahib", "Kush", "Parul"],
-            amountsOwed: [+50.0, +25.0, -75.0],
+            members: [
+                { name: "Sahib", amountOwed: +50.0 },
+                { name: "Kush", amountOwed: +25.0 },
+                { name: "Parul", amountOwed: -75.0 },
+            ],
+            expenses: [
+                { description: "Food", amount: 500 },
+                { description: "Tickets", amount: 1000 },
+            ],
         },
         {
-            groupName: "Trip to Canada",
+            name: "Trip to Canada",
             totalExpenses: 87750,
-            members: ["Somesh", "Sahib", "Parul", "Kush"],
-            amountsOwed: [+50000.0, -25000.0, 750.0, 6000.0],
+            members: [
+                { name: "Somesh", amountOwed: +50000.0 },
+                { name: "Sahib", amountOwed: -25000.0 },
+                { name: "Parul", amountOwed: 750.0 },
+                { name: "Kush", amountOwed: 6000.0 },
+            ],
+            expenses: [
+                { description: "Flight", amount: 60000 },
+                { description: "Accommodation", amount: 25000 },
+                { description: "Meals", amount: 2500 },
+            ],
         },
-
     ];
-
-    // Url basis
-    const selectedGroup = groups.find((group) => group.groupName === groupName);
-
+    const selectedGroup = groups.find((group) => group.name === groupName);
 
     return (
         <>
             <Breadcrumb pageName="Groups" />
             <div>
-                <h1>Group Details</h1>
                 {selectedGroup ? (
-                    <GroupDetailCard
-                        groupName={selectedGroup.groupName}
-                        totalExpenses={selectedGroup.totalExpenses}
-                        members={selectedGroup.members}
-                        amountsOwed={selectedGroup.amountsOwed}
-                    />
+                    <GroupDetailCard group={selectedGroup} />
                 ) : (
                     <p>Group not found.</p>
                 )}

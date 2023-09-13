@@ -27,7 +27,7 @@ const GroupCard: React.FC<GroupCardProps> = ({
         <div className="flex justify-between items-left">
           <div className={`font-semibold text-xl text-white flex items-center gap-2`}>
             {/* <Link to={`/groups/groupdetail`}> */}
-            <Link to={`/groupdetails/${groupName}`}>
+            <Link to={`/groups/${groupName}`}>
               <span>{groupName}</span>
             </Link>
             {isOpen && (
