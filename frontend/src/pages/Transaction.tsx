@@ -9,13 +9,13 @@ const Transactions = () => {
     <>
       <Breadcrumb pageName="Transaction" />
 
-      <div className="flex flex-col gap-10">
-        <div className="flex flex-wrap gap-5 xl:gap-7.5">
+      <div className="flex flex-col gap-10 ">
+        <div className="flex flex-wrap gap-5 xl:gap-7.5 ">
           <Link
             // ref={trigger}
             // onClick={() => setaddOpen(!addOpen)}
             to="/addTransaction"
-            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#5B39CF] py-4 px-10 text-center font-medium text-white hover:bg-[#8D80EE] lg:px-8 xl:px-10"
+            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#5B39CF] py-4 px-10 text-center font-medium text-white hover:bg-[#8D80EE] lg:px-8 xl:px-10 dark:border-strokedark dark:bg-boxdark dark:hover:bg-[#394452]"
           >
             <img src={add} className="h-5 w-5" alt="" />
             {/* <span>
