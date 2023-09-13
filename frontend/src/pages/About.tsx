@@ -16,7 +16,8 @@ const Chart = () => {
         <ChartTwo />
         <ChartThree />
       </div> */}
-      Kya krega jankar lomde
+      Info to be added soon
+
     </>
   );
 };
