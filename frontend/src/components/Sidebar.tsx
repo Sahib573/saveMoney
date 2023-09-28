@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import Logo from "../images/logo2/default.png";
 import SidebarLinkGroup from "./SidebarLinkGroup";
-import ReactTyped from "react-typed";
+// import ReactTyped from "react-typed";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -152,7 +152,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
               <li>
                 <NavLink
-                  to="/ecommerce"
+                  to="/home"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-white duration-300 ease-in-out hover:bg-[#8D80EE] dark:hover:bg-meta-4 ${
                     (pathname === "/" || pathname.includes("dashboard")) &&
                     "dark:bg-meta-4"
@@ -482,7 +482,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   About Us
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <div>
                   <h1 className="text-bold text-white">
                     <ReactTyped
@@ -492,7 +492,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     />
                   </h1>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </nav>

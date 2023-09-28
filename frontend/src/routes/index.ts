@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
-const ECommerce = lazy(() => import('../pages/Dashboard/ECommerce'));
+const Home = lazy(() => import('../pages/Home'));
 const Transaction = lazy(() => import('../pages/Transaction'));
 const About = lazy(() => import('../pages/About'));
 const FormElements = lazy(() => import('../pages/Form/FormElements'));
@@ -17,9 +17,9 @@ const Friends = lazy(() => import('../pages/Friends'));
 
 const coreRoutes = [
   {
-    path: '/ecommerce',
-    title: 'Ecommerce',
-    component: ECommerce,
+    path: '/home',
+    title: 'Home',
+    component: Home,
   },
   {
     path: '/transaction',
