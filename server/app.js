@@ -17,11 +17,10 @@ require("./config/passport-jwt")(passport);
 app.use(passport.initialize());
 
 // *************routes*************
-app.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
-  res.send("hi");
-});
+app.use("/", require("./routes"));
 
-app.listen(5172, () => {
-  console.log("server started");
+app.listen(5172, (err) => {
+  if (err) console.log(err);
+  else console.log("server started");
 });
 module.exports = app;
