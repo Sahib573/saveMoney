@@ -1,13 +1,14 @@
-import { Suspense, lazy, useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+"use strict";
+import { Suspense, lazy, useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
-import SignIn from './pages/Authentication/SignIn';
-import SignUp from './pages/Authentication/SignUp';
-import Loader from './common/Loader';
-import routes from './routes';
+import SignIn from "./pages/Authentication/SignIn";
+import SignUp from "./pages/Authentication/SignUp";
+import Loader from "./common/Loader";
+import routes from "./routes";
 
-const DefaultLayout = lazy(() => import('./layout/DefaultLayout'));
+const DefaultLayout = lazy(() => import("./layout/DefaultLayout"));
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -20,7 +21,7 @@ function App() {
     <Loader />
   ) : (
     <>
-      <Toaster position='top-right' containerClassName='overflow-auto' />
+      <Toaster position="top-right" containerClassName="overflow-auto" />
 
       <Routes>
         <Route path="/auth/signin" element={<SignIn />} />
