@@ -24,14 +24,17 @@ module.exports.register = async function (req, res) {
       return res.status(200).json({
         success: true,
         response: newuser,
-        token: jwt.sign(newuser.toJSON(), "13975sahib", { expiresIn: "2d" }),
+        token: jwt.sign(newuser.toJSON(), process.env.JWT_KEY, {
+          expiresIn: "2d",
+        }),
       });
     } else {
       return res.status(200).send("User already exists");
     }
   } catch (err) {
-    console.log("Error creating user: ", err);
-    return res.status(500).send("Error in creating user");
+    return res
+      .status(200)
+      .json({ message: "Error in creating user", success: false });
   }
 };
 
@@ -40,7 +43,8 @@ module.exports.login = async function (req, res) {
     let user = await User.findOne({ email: req.body.email }).select("-avatar");
     if (!user) {
       return res.status(422).json({
-        message: "invalid username or category",
+        message: "invalid Credentials",
+        success: false,
       });
     }
     const passwordsMatch = await bcrypt.compare(
@@ -53,13 +57,12 @@ module.exports.login = async function (req, res) {
 
     return res.status(200).json({
       success: true,
-      token: jwt.sign(user.toJSON(), "13975sahib", { expiresIn: "1d" }),
+      token: jwt.sign(user.toJSON(), process.env.JWT_KEY, { expiresIn: "1d" }),
     });
   } catch (err) {
-    console.log(err);
     return res
       .status(200)
-      .send("error in creating jwt-token while creating session");
+      .json({ message: "error in creating token", success: false });
   }
 };
 module.exports.update = async function (req, res) {
@@ -67,7 +70,9 @@ module.exports.update = async function (req, res) {
     console.log(req.user);
     return res.status(200).json({ message: "done update" });
   } catch (err) {
-    res.status(200).send("error in updating user");
+    return res
+      .status(200)
+      .json({ message: "error in creating token", success: false });
   }
 };
 module.exports.get = async function (req, res) {
