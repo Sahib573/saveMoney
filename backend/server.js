@@ -1,5 +1,5 @@
-import { app } from "./app.js";
-
+// import app  from "./app.js";
+const app = require("./app")
 app.listen(process.env.PORT,()=>{
     console.log(`server listening on ${process.env.PORT}`);
 })

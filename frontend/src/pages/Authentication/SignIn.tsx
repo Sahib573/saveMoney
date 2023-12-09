@@ -1,9 +1,28 @@
-import { Link } from 'react-router-dom';
-import LogoDark from '../../images/logo/logo-dark.svg';
-import Logo from '../../images/logo/logo.svg';
-
+import { Link } from "react-router-dom";
+import Logo from "../../images/logo/logo.svg";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
+  const [email, setmail] = useState<string>("");
+  const [password, setpassword] = useState<string>("");
+  const navigate = useNavigate();
+
+  const clickHandle = (e: any) => {
+    e.preventDefault();
+    async function submit() {
+      const res = await axios.post("http://localhost:5001/user/login", {
+        email,
+        password,
+      });
+      if(res && res.data && res.data.user){
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        navigate("/ecommerce");
+      }
+    }
+    submit();
+  };
   return (
     <>
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -12,12 +31,12 @@ const SignIn = () => {
             <div className="py-17.5 px-26 text-center">
               <Link className="mb-5.5 inline-block" to="/">
                 <img className="hidden dark:block" src={Logo} alt="Logo" />
-                <img className="dark:hidden" src={LogoDark} alt="Logo" />
+                {/* <img className="dark:hidden" src={LogoDark} alt="Logo" /> */}
+                <span className="text-4xl font-bold">Bugetify</span>
               </Link>
 
-              <p className="2xl:px-20">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                suspendisse.
+              <p className="2xl:px-20 text-2xl italic">
+                Your Wallet's Trusted Companion
               </p>
 
               <span className="mt-15 inline-block">
@@ -149,7 +168,7 @@ const SignIn = () => {
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <span className="mb-1.5 block font-medium">Start for free</span>
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-                Sign In to TailAdmin
+                Sign In to Bugetify
               </h2>
 
               <form>
@@ -161,6 +180,8 @@ const SignIn = () => {
                     <input
                       type="email"
                       placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setmail(e.target.value)}
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
 
@@ -186,12 +207,14 @@ const SignIn = () => {
 
                 <div className="mb-6">
                   <label className="mb-2.5 block font-medium text-black dark:text-white">
-                    Re-type Password
+                    Password
                   </label>
                   <div className="relative">
                     <input
                       type="password"
+                      value={password}
                       placeholder="6+ Characters, 1 Capital letter"
+                      onChange={(e) => setpassword(e.target.value)}
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
 
@@ -223,11 +246,12 @@ const SignIn = () => {
                   <input
                     type="submit"
                     value="Sign In"
+                    onClick={clickHandle}
                     className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
                   />
                 </div>
 
-                <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
+                {/* <button className="flex w-full items-center justify-center gap-3.5 rounded-lg border border-stroke bg-gray p-4 hover:bg-opacity-50 dark:border-strokedark dark:bg-meta-4 dark:hover:bg-opacity-50">
                   <span>
                     <svg
                       width="20"
@@ -262,11 +286,11 @@ const SignIn = () => {
                     </svg>
                   </span>
                   Sign in with Google
-                </button>
+                </button> */}
 
                 <div className="mt-6 text-center">
                   <p>
-                    Don’t have any account?{' '}
+                    Don’t have any account?{" "}
                     <Link to="/auth/signup" className="text-primary">
                       Sign Up
                     </Link>

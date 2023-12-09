@@ -27,9 +27,9 @@ module.exports = function (passport) {
         }
       })
     );
-    console.log("sahib");
+    // console.log("sahib");
   } catch (err) {
-    console.log("singh");
+    // console.log("singh");
     console.log(err);
   }
 };
