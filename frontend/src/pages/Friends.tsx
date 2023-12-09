@@ -5,54 +5,103 @@ import img2 from "../images/user/user-03.png";
 import img3 from "../images/user/user-04.png";
 import add from "../images/icon/icons8-add-64.png";
 import minus from "../images/icon/icons8-minus-48.png";
+import axios from "axios";
 
-type Friend = {
+interface Friend {
   url: string;
   email: string;
   name: string;
   mobile: number;
-  address: {
-    city: string;
-    country: string;
-  };
-};
+  address: string;
+}
 const Friends = () => {
-  const [contactList, setcontactList] = useState<Array<Friend> | undefined>([
-    {
-      url: img2,
-      email: "sahib@gmail.com",
-      name: "sahib singh",
-      mobile: 7056953669,
-      address: {
-        city: "Kurukshetra",
-        country: "India",
-      },
-    },
-    {
-      url: img3,
-      email: "kush@gmail.com",
-      name: "Kush Aggarwal",
-      mobile: 7056953669,
-      address: {
-        city: "Kaithal",
-        country: "India",
-      },
-    },
-    {
-      url: img1,
-      email: "Ayushi@gmail.com",
-      name: "Ayushi Gupta",
-      mobile: 7056953669,
-      address: {
-        city: "Kurukshetra",
-        country: "India",
-      },
-    },
+  const [contactList, setcontactList] = useState<Array<Friend>>([
+    // {
+    //   url: img2,
+    //   email: "sahib@gmail.com",
+    //   name: "sahib singh",
+    //   mobile: 7056953669,
+    //   address: "Kurukshetra",
+    // },
+    // {
+    //   url: img3,
+    //   email: "kush@gmail.com",
+    //   name: "Kush Aggarwal",
+    //   mobile: 7056953669,
+    //   address:"Kaithal",
+    // },
+    // {
+    //   url: img1,
+    //   email: "Ayushi@gmail.com",
+    //   name: "Ayushi Gupta",
+    //   mobile: 7056953669,
+    //   address:"Kurukshetra",
+    // },
   ]);
-  const handleSubmit = (e: React.FormEvent) => {
+  const [update, setupdate] = useState<boolean>(false);
+  const [list, setlist] = useState<Array<String>>([]);
+  const getUser = localStorage.getItem("user");
+  useEffect(() => {
+    setcontactList([]);
+    setlist([]);
+    async function submit() {
+      if (getUser) {
+        const usr = JSON.parse(getUser);
+        const _id = usr._id;
+        let res = await axios.post("http://localhost:5001/user/getFriends", {
+          _id,
+        });
+        res = res.data;
+        if (res && res.data) {
+          for (let i = 0; i < res.data.length; i++) {
+            if (
+              res.data[i].name &&
+              res.data[i].email &&
+              res.data[i].contactNo &&
+              res.data[i].address
+            ) {
+              
+              const newfriend: Friend = {
+                url: (i%2)?img1:img2,
+                email: res.data[i].email,
+                name: res.data[i].name,
+                mobile: res.data[i].contactNo,
+                address: res.data[i].address,
+              };
+              const fid = res.data[i].frind_id.toString();
+              let flag = true;
+              for (let i = 0; i < list.length; i++) {
+                if (list[i].localeCompare(fid) == 0) flag = false;
+              }
+              if (flag) {
+                setcontactList((contactList) => [
+                  ...(contactList),
+                  newfriend,
+                ]);
+                setlist((list) => [...(list), fid]);
+              }
+            } else {
+              console.log("err");
+            }
+          }
+        }
+      }
+    }
+    console.log(123);
+    submit();
+  }, [update]);
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log("Email to send to the backend:", email);
+    if (getUser) {
+      const usr = JSON.parse(getUser);
+      const _id = usr._id;
+      const res = await axios.post("http://localhost:5001/user/addfriend", {
+        _id,
+        friend_email: email,
+      });
+      if (res) setupdate(!update);
+    }
 
     setEmail("");
   };
@@ -61,10 +110,7 @@ const Friends = () => {
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
   };
-  //   useEffect(() => {
-  //     const data = fetch("url");
-  //     setcontactList((contactList) => [...contactList, data]);
-  //   });
+
   const [showDiv, setShowDiv] = useState(false);
   const [buttonImage, setButtonImage] = useState(add);
 
@@ -138,7 +184,7 @@ const Friends = () => {
               </p>
               <p className="text-black dark:text-white">
                 <span className="font-medium">city: </span>
-                {contact.address.city}
+                {contact.address}
               </p>
             </figcaption>
           </figure>

@@ -131,19 +131,37 @@ module.exports.login = async function (req, res) {
 };
 module.exports.addfriend = async function (req, res) {
   try {
-    let newFriend = await User.findOne({email : req.body.friend_email}).select("_id");
-    newFriend = {frind_id: newFriend._id}.toObject();
-  // let newFriendid = newFriend._id;
-  // console.log(newFriendid)
-
-  // newFriendid = newFriendid.toObject()
-    // console.log(newFriendid)
-    const friend_res = await User.updateOne({_id : req.body._id},{$push:"friends",newFriend});
-    if(friend_res){
+    let Friend = await User.findOne({ email: req.body.friend_email }).select(
+      "_id name email address contactNo"
+    );
+    if (!Friend) {
+      return res.status(200).send("error in creating friend");
+    }
+    const newFriend = { frind_id: Friend._id, name:Friend.name, email:Friend.email, contactNo:Friend.contactNo, address:Friend.address };
+    const friend_res = await User.findOne({ _id: req.body._id });
+    if (friend_res) {
+      for (let i = 0; i < friend_res.friends.length; i++) {
+        if (friend_res.friends[i].frind_id.equals(newFriend.frind_id)) {
+          return res.status(200).send("Friend already exists");
+        }
+      }
+      friend_res.friends.push(newFriend);
+      await friend_res.save();
+      return res.status(200).json({ data: friend_res.friends });
+    } else {
+      res.status(200).send("error in creating friend");
     }
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(200).send("error in creating friend");
+  }
+};
+module.exports.getFriends = async function (req, res) {
+  try {
+    const list = await User.findOne({ _id: req.body._id }).select("friends");
+    return res.status(200).json({ data: list.friends });
+  } catch (err) {
+    res.status(200).send("error in updating user");
   }
 };
 module.exports.update = async function (req, res) {
