@@ -47,6 +47,7 @@ const userSchema = mongoose.Schema(
         amt_give: { type: SchemaTypes.Double, default: 0 },
       },
     ],
+    groups: [{id : mongoose.Schema.Types.ObjectId }],
     owe: { type: SchemaTypes.Double, default: 0 }, //lene hain jo
     owed: { type: SchemaTypes.Double, default: 0 }, // dene hain jo
     avatar: {

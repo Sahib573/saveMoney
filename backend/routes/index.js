@@ -5,4 +5,5 @@ const router = express.Router();
 
 router.use("/user", require("./user"));
 router.use("/expense", require("./expense"));
+router.use("/group",require("./group"));
 module.exports = router;

@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 
 interface GroupCardProps {
   groupName: string;
+  description: string;
   totalExpenses: number;
   members: string[];
   amountsOwed: number[];
-
 }
 
 const GroupCard: React.FC<GroupCardProps> = ({
   groupName,
+  description,
   totalExpenses,
   members,
   amountsOwed,
@@ -25,19 +26,21 @@ const GroupCard: React.FC<GroupCardProps> = ({
     <div className="max-w-sm rounded hover:shadow-md overflow-hidden hover:scale-105 transition duration-500 ease-in-out hover:shadow-black-100 bg-[#5B39CF]">
       <div className="px-6 py-4">
         <div className="flex justify-between items-left">
-          <div className={`font-semibold text-xl text-white flex items-center gap-2`}>
+          <div
+            className={`font-semibold text-xl text-white flex items-center gap-2`}
+          >
             {/* <Link to={`/groups/groupdetail`}> */}
             <Link to={`/groups/${groupName}`}>
               <span>{groupName}</span>
             </Link>
-            {isOpen && (
+            {/* {isOpen && (
               <button
                 title="Add Expense"
                 className="text-white bg-[#7A3DDF] rounded-full w-7 h-7 p-0 justify-center hover:bg-[#F6C11E]"
               >
-                <span>+</span>
-              </button>
-            )}
+                <span>+</span> */}
+              {/* </button> */}
+            {/* )} */}
           </div>
 
           <div>
@@ -50,11 +53,15 @@ const GroupCard: React.FC<GroupCardProps> = ({
           </div>
         </div>
         <div
-          className={`transition-max-height ease-out duration-300 ${isOpen ? "max-h-96" : "max-h-0 overflow-hidden"
-            }`}
+          className={`transition-max-height ease-out duration-300 ${
+            isOpen ? "max-h-96" : "max-h-0 overflow-hidden"
+          }`}
         >
           <p className="text-lg text-white">
             Total Expenses: ${totalExpenses.toFixed(2)}
+          </p>
+          <p className=" text-white">
+            Description: {description}
           </p>
           <ul className="mt-3">
             {members.map((member, index) => {
@@ -65,8 +72,9 @@ const GroupCard: React.FC<GroupCardProps> = ({
                 <li key={index} className="text-white text-lg">
                   {member}
                   <p
-                    className={`text-base ${isOwing ? "text-[#00F609]" : "text-[#FC5E3A]"
-                      }`}
+                    className={`text-base ${
+                      isOwing ? "text-[#00F609]" : "text-[#FC5E3A]"
+                    }`}
                   >
                     {isOwing ? "Owes You" : "You Owe"}: $
                     {Math.abs(amountOwed).toFixed(2)}
