@@ -34,7 +34,6 @@ module.exports.sendmail = async (req, res) => {
 
 module.exports.create = async function (req, res) {
   try {
-    console.log("cvreate");
     let user = await User.findOne({ email: req.body.email });
     if (!user) {
       let newuser = await User.create({
@@ -72,7 +71,6 @@ module.exports.getUser = async function (req, res) {
       category = user.category,
       _id = user._id;
     const usr = user.toJSON();
-    console.log(user.toJSON());
     return res.status(200).json({
       message: "success",
       data: {
@@ -97,7 +95,6 @@ module.exports.getUser = async function (req, res) {
 };
 module.exports.login = async function (req, res) {
   try {
-    console.log("sahib");
     let user = await User.findOne({ email: req.body.email }).select("-avatar");
     if (!user) {
       return res.status(422).json({
@@ -113,10 +110,8 @@ module.exports.login = async function (req, res) {
     if (!passwordsMatch) {
       return res.status(200).send("password doesn't match");
     }
-    console.log(user);
 
     const usr = user.toJSON();
-    console.log(user.toJSON());
     return res.status(200).json({
       message: "sign in successful here is your token please keep it safe",
       user,
@@ -166,7 +161,6 @@ module.exports.getFriends = async function (req, res) {
 };
 module.exports.update = async function (req, res) {
   try {
-    console.log("arrived");
     let user = await User.findOne({ user_id: req.user.user_id });
     if (user) {
       user.name = req.body.name;

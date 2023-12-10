@@ -44,6 +44,7 @@ const Groups: React.FC = () => {
               members: memArr,
               amountsOwed: amtArr,
             };
+            console.log(newGroup)
             setGroup((group) => [...group, newGroup]);
           }
         }
