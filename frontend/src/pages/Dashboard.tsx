@@ -1,7 +1,7 @@
 import SettleUpSection from "./SettleUp.tsx";
-import ChatCard from "../../components/ChatCard.tsx";
+import ChatCard from "../components/ChatCard.tsx";
 
-const ECommerce = () => {
+const Dashboard = () => {
   return (
     <>
       <SettleUpSection />
@@ -14,4 +14,4 @@ const ECommerce = () => {
   );
 };
 
-export default ECommerce;
+export default Dashboard;

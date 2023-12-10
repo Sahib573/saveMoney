@@ -28,7 +28,7 @@ const AboutUs: React.FC = () => {
         <div>
           <h3 className="text-xl font-semibold" style={{ color: mainColor }}>Sahib Singh</h3>
           <p className="text-sm text-gray-600" style={{ color: textColor }}>Lead Developer</p>
-          <p className="text-sm text-gray-600" style={{ color: textColor }}>John is the mastermind behind the Smart Expense app...</p>
+          <p className="text-sm text-gray-600" style={{ color: textColor }}>Tech Stack : ReactJs, ExpressJs, TailwindCSS, Bootstrap, NodeJs, NextJs, Git/Github, HTML, Javascript, Java, C++, Python, C, MongoDB</p>
         </div>
       </div>
       <div className="flex items-center gap-5 py-3 border-b border-gray-300">
@@ -36,7 +36,7 @@ const AboutUs: React.FC = () => {
         <div>
           <h3 className="text-xl font-semibold" style={{ color: mainColor }}>Parul</h3>
           <p className="text-sm text-gray-600" style={{ color: textColor }}> Developer</p>
-          <p className="text-sm text-gray-600" style={{ color: textColor }}>Parul is connected with us for past 2 years...</p>
+          <p className="text-sm text-gray-600" style={{ color: textColor }}>Tech Stack : ReactJs, ExpressJs, CSS, Git/Github, HTML, Javascript, Java, C++, Python, C</p>
         </div>
       </div>
       <div className="flex items-center gap-5 py-3 border-b border-gray-300">
@@ -44,7 +44,7 @@ const AboutUs: React.FC = () => {
         <div>
           <h3 className="text-xl font-semibold" style={{ color: mainColor }}>Kush</h3>
           <p className="text-sm text-gray-600" style={{ color: textColor }}> Project Manager</p>
-          <p className="text-sm text-gray-600" style={{ color: textColor }}>Kush handled the timeline and flow of process for the app</p>
+          <p className="text-sm text-gray-600" style={{ color: textColor }}>Tech Stack : ReactJs, CSS, Git/Github, HTML, Javascript, C++, Python, ML, Time Management, Presentation</p>
         </div>
       </div>
 
@@ -53,7 +53,11 @@ const AboutUs: React.FC = () => {
       <p className="text-lg mb-8" style={{ color: textColor }}>
         We're eager to hear from you! Have questions, feedback, or suggestions? Reach out to us at{' '}
         <a href="mailto:info@smartexpense.com" className="text-blue-500 hover:underline" style={{ color: mainColor }}>
-          info@smartexpense.com
+          sahib.ug20@nsut.ac.in
+        </a> , <a href="mailto:info@smartexpense.com" className="text-blue-500 hover:underline" style={{ color: mainColor }}>
+          kush.ug20@nsut.ac.in
+        </a> , <a href="mailto:info@smartexpense.com" className="text-blue-500 hover:underline" style={{ color: mainColor }}>
+          parul.ug20@nsut.ac.in
         </a>.
       </p>
     </div>

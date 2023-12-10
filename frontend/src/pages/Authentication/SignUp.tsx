@@ -24,7 +24,7 @@ const SignUp = () => {
     });
     if(res && res.data && res.data.response){
       localStorage.setItem('user', JSON.stringify(res.data.response));
-      navigate("/ecommerce");
+      navigate("/dashboard");
     }
   };
   return (

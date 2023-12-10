@@ -18,7 +18,7 @@ const SignIn = () => {
       });
       if(res && res.data && res.data.user){
         localStorage.setItem('user', JSON.stringify(res.data.user));
-        navigate("/ecommerce");
+        navigate("/dashboard");
       }
     }
     submit();

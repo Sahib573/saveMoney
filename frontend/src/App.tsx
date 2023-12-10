@@ -12,11 +12,14 @@ const DefaultLayout = lazy(() => import("./layout/DefaultLayout"));
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
-
+  let usr = "";
   useEffect(() => {
     setTimeout(() => setLoading(false), 800);
   }, []);
-
+  const getUser = localStorage.getItem("user");
+  if (getUser) {
+     usr = JSON.parse(getUser);
+  }
   return loading ? (
     <Loader />
   ) : (
@@ -26,16 +29,18 @@ function App() {
       <Routes>
         <Route path="/auth/signin" element={<SignIn />} />
         <Route path="/auth/signup" element={<SignUp />} />
-        <Route path="/" element={<DefaultLayout />}>
-          {/* <Route index element={<ECommerce />} /> */}
+        <Route path="/" element={ (usr)?(<DefaultLayout />):(<SignIn/>)}>
+          {/* <Route index element={<Dashboard />} /> */}
           {routes.map(({ path, component: Component }) => (
             <Route
               key={path}
               path={path}
               element={
+                (usr)?(
                 <Suspense fallback={<Loader />}>
                   <Component />
                 </Suspense>
+                ):(<SignIn/>)
               }
             />
           ))}
