@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import ReactTyped from "react-typed";
 import img1 from "../images/user/user-02.png";
 import img2 from "../images/user/user-03.png";
 import img3 from "../images/user/user-04.png";
@@ -132,11 +131,7 @@ const Friends = () => {
         {showDiv && (
           <div>
             <h2 className="italic text-[#5B39CF]">
-              <ReactTyped
-                strings={["Let each spend Become a Trend!!!"]}
-                typeSpeed={100}
-                loop
-              />
+            
             </h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4 flex items-center">
