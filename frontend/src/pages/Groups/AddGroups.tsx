@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 interface Member {
     member: string;
     email: string;
-    amount: number;
 }
 
 const AddGroupForm = () => {
@@ -13,7 +12,8 @@ const AddGroupForm = () => {
     const [membersList, setMembersList] = useState<Member[]>([]);
     const [newMember, setNewMember] = useState('');
     const [newMemberEmail, setNewMemberEmail] = useState('');
-    const [amountOwe, setAmountOwe] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
+
 
     const handleAddGroup = () => {
 
@@ -23,15 +23,14 @@ const AddGroupForm = () => {
         setMembersList([]);
         setNewMember('');
         setNewMemberEmail('');
-        setAmountOwe('');
+        setSelectedCategory('');
     };
 
     const handleAddMember = () => {
-        if (newMember && newMemberEmail && amountOwe) {
-            setMembersList([...membersList, { member: newMember, email: newMemberEmail, amount: parseFloat(amountOwe) }]);
+        if (newMember && newMemberEmail) {
+            setMembersList([...membersList, { member: newMember, email: newMemberEmail }]);
             setNewMember('');
             setNewMemberEmail('');
-            setAmountOwe('');
         }
     };
 
@@ -109,14 +108,6 @@ const AddGroupForm = () => {
                                 placeholder="Email"
                                 className="w-full border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                             />
-                            <input
-                                type="number"
-                                id="amountOwe"
-                                value={amountOwe}
-                                onChange={(e) => setAmountOwe(e.target.value)}
-                                placeholder="Amount Owed"
-                                className="w-full rounded-r border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
-                            />
                             <button
                                 type="button"
                                 onClick={handleAddMember}
@@ -133,7 +124,7 @@ const AddGroupForm = () => {
                             <ul>
                                 {membersList.map((member, index) => (
                                     <li key={index} className="flex items-center mb-2">
-                                        <span>{member.member}: ${member.amount}</span>
+                                        <span>{member.member}: {member.email}</span>
                                         <button
                                             type="button"
                                             onClick={() => handleRemoveMember(index)}
@@ -146,6 +137,23 @@ const AddGroupForm = () => {
                             </ul>
                         </div>
                     )}
+                    <div className="mb-4.5">
+                        <label htmlFor="selectedCategory" className="mb-1 block text-black dark:text-white">
+                            Category:
+                        </label>
+                        <select
+                            id="selectedCategory"
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                            required
+                            className="w-full rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                        >
+                            <option value="" disabled>Select a category</option>
+                            <option value="trip">Trip</option>
+                            <option value="couple">Couple</option>
+                            <option value="friends">Friends</option>
+                        </select>
+                    </div>
 
                     <button
                         type="submit"
