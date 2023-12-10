@@ -22,7 +22,7 @@ const groupSchema = mongoose.Schema(
         email: String,
         registration_status: String,
         //   "custom_picture": false,
-        total : { type: SchemaTypes.Double, default: 0 },
+        total: { type: SchemaTypes.Double, default: 0 },
         balance: [{ type: SchemaTypes.Double, default: 0 }],
       },
     ],
