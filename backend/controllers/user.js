@@ -31,6 +31,19 @@ module.exports.sendmail = async (req, res) => {
     res.status(200).json({ error: "Failed to send email" });
   }
 };
+module.exports.get_profile = async function (req, res) {
+  try {
+    let profile = await User.findById(req.body._id).select(
+      "-password -avatar"
+    ); //userId is objectId
+    return res.status(200).json({
+       profile
+    });
+  } catch (err) {
+    // console.log(err);
+    return res.status(200).send("error in getting profile");
+  }
+};
 
 module.exports.create = async function (req, res) {
   try {
@@ -257,16 +270,3 @@ module.exports.sendResetMail = async (req, res) => {
   }
 };
 
-module.exports.get_profile = async function (req, res) {
-  try {
-    let profile = await User.findById(req.body.userId).select(
-      "-password -avatar"
-    ); //userId is objectId
-    return res.status(200).json({
-      response: profile,
-    });
-  } catch (err) {
-    // console.log(err);
-    return res.status(200).send("error in getting profile");
-  }
-};

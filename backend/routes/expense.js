@@ -8,4 +8,5 @@ const expenseController = require("../controllers/expense");
 router.post("/create", expenseController.create);
 router.get("/all", expenseController.all);
 router.post("/bydate", expenseController.byDate);
+router.post("/getAnalytics",expenseController.getAnalytics)
 module.exports = router;

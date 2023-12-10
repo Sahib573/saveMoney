@@ -13,11 +13,12 @@ const Profile = () => {
       if (getUser) {
         const usr = JSON.parse(getUser);
         const _id = usr._id;
-        const res = await axios.post("http://localhost:5001/user/get_profile", {
+        const res = await axios.post("http://localhost:5001/user/getProfile", {
           _id,
         });
-        if (res && res.data && res.data.data) {
-          const userData = res.data.data;
+        // console.log(res)
+        if (res && res.data && res.data.profile) {
+          const userData = res.data.profile;
           setProfileData(userData);
         }
 

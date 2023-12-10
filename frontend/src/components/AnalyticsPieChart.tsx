@@ -22,8 +22,8 @@ const options: ApexOptions = {
   labels: [
     "Food",
     "Clothes",
-    "Personal Development",
     "Fun",
+    "Personal Development",
     "Travel",
     "Groceries",
     "Hair",
@@ -66,7 +66,7 @@ const options: ApexOptions = {
 
 const AnalyticsPieChart: React.FC = () => {
   const [state, setState] = useState<ChartThreeState>({
-    series: [65, 34, 42, 56, 67, 87, 98],
+    series: [23, 30, 35, 4, 2, 2, 3],
   });
 
   return (
@@ -79,15 +79,15 @@ const AnalyticsPieChart: React.FC = () => {
         </div>
         <div>
           <div className="relative z-20 inline-block">
-            <select
+            {/* <select
               name=""
               id=""
               className="relative z-20 inline-flex appearance-none bg-transparent py-1 pl-3 pr-8 text-sm font-medium outline-none"
             >
               <option value="">Monthly</option>
               <option value="">Yearly</option>
-            </select>
-            <span className="absolute top-1/2 right-3 z-10 -translate-y-1/2">
+            </select> */}
+            {/* <span className="absolute top-1/2 right-3 z-10 -translate-y-1/2">
               <svg
                 width="10"
                 height="6"
@@ -106,7 +106,7 @@ const AnalyticsPieChart: React.FC = () => {
                   fill="#637381"
                 />
               </svg>
-            </span>
+            </span> */}
           </div>
         </div>
       </div>
@@ -127,7 +127,7 @@ const AnalyticsPieChart: React.FC = () => {
             <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-primary"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Food </span>
-              <span> x% </span>
+              <span> 23% </span>
             </p>
           </div>
         </div>
@@ -136,7 +136,7 @@ const AnalyticsPieChart: React.FC = () => {
             <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#6577F3]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
               <span> Clothes </span>
-              <span> y% </span>
+              <span> 30% </span>
             </p>
           </div>
         </div>
@@ -144,8 +144,44 @@ const AnalyticsPieChart: React.FC = () => {
           <div className="flex w-full items-center">
             <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
             <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-              <span> ETC... </span>
-              <span> etc% </span>
+              <span> Fun </span>
+              <span> 35% </span>
+            </p>
+          </div>
+        </div>
+        <div className="w-full px-8 sm:w-1/2">
+          <div className="flex w-full items-center">
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
+            <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
+              <span> Personal Development </span>
+              <span> 4% </span>
+            </p>
+          </div>
+        </div>
+        <div className="w-full px-8 sm:w-1/2">
+          <div className="flex w-full items-center">
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
+            <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
+              <span> Travel </span>
+              <span> 2% </span>
+            </p>
+          </div>
+        </div>
+        <div className="w-full px-8 sm:w-1/2">
+          <div className="flex w-full items-center">
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
+            <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
+              <span> Groceries </span>
+              <span> 2% </span>
+            </p>
+          </div>
+        </div>
+        <div className="w-full px-8 sm:w-1/2">
+          <div className="flex w-full items-center">
+            <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
+            <p className="flex w-full justify-between text-sm font-medium text-black dark:text-white">
+              <span> Hair </span>
+              <span> 3% </span>
             </p>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { ApexOptions } from "apexcharts";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 
 const options: ApexOptions = {
@@ -98,33 +99,67 @@ const options: ApexOptions = {
       },
     },
     min: 0,
-    max: 100,
+    max: 1500,
   },
 };
 
-interface ChartOneState {
-  series: {
-    name: string;
-    data: number[];
-  }[];
+interface series {
+  name: string;
+  data: number[];
 }
 
-const AnalyticsCompareChart: React.FC = () => {
+const AnalyticsCompareChart = (props:any) => {
   // we will fetch both months data from db through backend call and store in this state object
-  const [state, setState] = useState<ChartOneState>({
-    series: [
-      {
-        name: "Last Month",
-        data: [23, 11, 22, 27, 13, 22, 37],
-      },
+  const [state, setState] = useState<series[]>([]);
+  const [lastArr, setlastArr] = useState<number[]>([]);
+  const [curArr, setcurArr] = useState<number[]>([]);
+  useEffect(() => {
+    async function submit() {
+      const getUser = localStorage.getItem("user");
+      if (getUser) {
+        const usr = JSON.parse(getUser);
+        const _id = usr._id;
+        const d = new Date();
+        const ts = Date.UTC(d.getFullYear(), d.getMonth(), d.getDate());
+        const curweekend = new Date(ts).toISOString();
 
-      {
-        name: "Current Month",
-        data: [30, 25, 36, 30, 45, 35, 64],
-      },
-    ],
-  });
+        const d__ = new Date(Date.now() - 7 * 864e5);
+        const ts__ = Date.UTC(d__.getFullYear(), d__.getMonth(), d__.getDate());
+        const curweekstart = new Date(ts__).toISOString();
 
+        const d2__ = new Date(Date.now() - 14 * 864e5);
+        const ts2__ = Date.UTC(
+          d2__.getFullYear(),
+          d2__.getMonth(),
+          d2__.getDate()
+        );
+        const lastweekstart = new Date(ts2__).toISOString();
+
+        const res = await axios.post(
+          "http://localhost:5001/expense/getAnalytics",
+          {
+            _id,
+            lastweekstart,
+            curweekstart,
+            curweekend,
+          }
+        );
+        // console.log(res);
+        if (res && res.data) {
+          if (res.data.curArr) setcurArr((curArr)=>res.data.curArr);
+          if (res.data.lastArr) setlastArr((lastArr)=>res.data.lastArr);
+          const nw1: series = { name: "Last week", data: lastArr };
+          const nw2: series = { name: "Cur week", data: curArr };
+          setState((state)=>[nw1, nw2]);
+          // console.log(state);
+        }
+      }
+    }
+    submit();
+  }, []);
+  // console.log(state);
+  const date = new Date(Date.now()).toDateString();
+  const lastdate = new Date(Date.now() - 7 * 864e5).toDateString();
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
@@ -135,9 +170,9 @@ const AnalyticsCompareChart: React.FC = () => {
             </span>
             <div className="w-full">
               <p className="font-semibold text-primary">
-                Spending of Last Month
+                Spending of Last Week
               </p>
-              <p className="text-sm font-medium">Date</p>
+              <p className="text-sm font-medium">{lastdate}</p>
             </div>
           </div>
           <div className="flex min-w-47.5">
@@ -146,23 +181,10 @@ const AnalyticsCompareChart: React.FC = () => {
             </span>
             <div className="w-full">
               <p className="font-semibold text-secondary">
-                Spending of Current Month
+                Spending of Current Week
               </p>
-              <p className="text-sm font-medium">Date</p>
+              <p className="text-sm font-medium">{date}</p>
             </div>
-          </div>
-        </div>
-        <div className="flex w-full max-w-45 justify-end">
-          <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
-            <button className="rounded bg-white py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
-              Day
-            </button>
-            <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
-              Week
-            </button>
-            <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
-              Month
-            </button>
           </div>
         </div>
       </div>
@@ -171,7 +193,7 @@ const AnalyticsCompareChart: React.FC = () => {
         <div id="chartOne" className="-ml-5">
           <ReactApexChart
             options={options}
-            series={state.series}
+            series={state}
             type="area"
             height={350}
           />
@@ -182,3 +204,23 @@ const AnalyticsCompareChart: React.FC = () => {
 };
 
 export default AnalyticsCompareChart;
+
+
+
+
+
+
+
+// <div className="flex w-full max-w-45 justify-end">
+// <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
+//   <button className="rounded bg-white py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
+//     Day
+//   </button>
+//   <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
+//     Week
+//   </button>
+//   <button className="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
+//     Month
+//   </button>
+// </div>
+// </div>

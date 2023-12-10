@@ -40,7 +40,6 @@ const Transactions = () => {
         const l = new Date(Date.now()-864e5);
         const ts_ = Date.UTC(l.getFullYear(), l.getMonth(), l.getDate());
         const lastdate = new Date(ts_).toISOString();
-        console.log(lastdate);
         let res2 = await axios.post("http://localhost:5001/expense/byDate", {
           _id,
           date : lastdate,

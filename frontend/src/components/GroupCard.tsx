@@ -29,18 +29,9 @@ const GroupCard: React.FC<GroupCardProps> = ({
           <div
             className={`font-semibold text-xl text-white flex items-center gap-2`}
           >
-            {/* <Link to={`/groups/groupdetail`}> */}
             <Link to={`/groups/${groupName}`}>
               <span>{groupName}</span>
             </Link>
-            {/* {isOpen && (
-              <button
-                title="Add Expense"
-                className="text-white bg-[#7A3DDF] rounded-full w-7 h-7 p-0 justify-center hover:bg-[#F6C11E]"
-              >
-                <span>+</span> */}
-              {/* </button> */}
-            {/* )} */}
           </div>
 
           <div>
@@ -76,7 +67,9 @@ const GroupCard: React.FC<GroupCardProps> = ({
                       isOwing ? "text-[#00F609]" : "text-[#FC5E3A]"
                     }`}
                   >
-                    {isOwing ? "Owes You" : "You Owe"}: $
+                    {/* {isOwing ? "Owes " : "You Owe"}: */}
+                    Amount Spent
+                     $
                     {Math.abs(amountOwed).toFixed(2)}
                   </p>
                 </li>
