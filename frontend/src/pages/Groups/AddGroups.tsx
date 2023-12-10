@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 interface Member {
     member: string;
+    email: string;
     amount: number;
 }
 
@@ -9,8 +10,9 @@ const AddGroupForm = () => {
     const [groupName, setGroupName] = useState('');
     const [groupDescription, setGroupDescription] = useState('');
     const [totalExpense, setTotalExpense] = useState('');
-    const [membersList, setMembersList] = useState<Member[]>([]); // Define the type of membersList
+    const [membersList, setMembersList] = useState<Member[]>([]);
     const [newMember, setNewMember] = useState('');
+    const [newMemberEmail, setNewMemberEmail] = useState('');
     const [amountOwe, setAmountOwe] = useState('');
 
     const handleAddGroup = () => {
@@ -20,19 +22,20 @@ const AddGroupForm = () => {
         setTotalExpense('');
         setMembersList([]);
         setNewMember('');
+        setNewMemberEmail('');
         setAmountOwe('');
     };
 
     const handleAddMember = () => {
-        if (newMember && amountOwe) {
-            //@ts-ignore
-            setMembersList([...membersList, { member: newMember, amount: amountOwe }]);
+        if (newMember && newMemberEmail && amountOwe) {
+            setMembersList([...membersList, { member: newMember, email: newMemberEmail, amount: parseFloat(amountOwe) }]);
             setNewMember('');
+            setNewMemberEmail('');
             setAmountOwe('');
         }
     };
-    //@ts-ignore
-    const handleRemoveMember = (index) => {
+
+    const handleRemoveMember = (index: number) => {
         const updatedMembersList = [...membersList];
         updatedMembersList.splice(index, 1);
         setMembersList(updatedMembersList);
@@ -40,7 +43,7 @@ const AddGroupForm = () => {
 
     return (
         <>
-            {/* Breadcrumb and other components here */}
+
 
             <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
                 <form onSubmit={handleAddGroup} className="p-3">
@@ -99,6 +102,14 @@ const AddGroupForm = () => {
                                 className="w-full rounded-l border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                             />
                             <input
+                                type="text"
+                                id="newMemberEmail"
+                                value={newMemberEmail}
+                                onChange={(e) => setNewMemberEmail(e.target.value)}
+                                placeholder="Email"
+                                className="w-full border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
+                            />
+                            <input
                                 type="number"
                                 id="amountOwe"
                                 value={amountOwe}
@@ -116,7 +127,6 @@ const AddGroupForm = () => {
                         </div>
                     </div>
 
-                    {/* Display added members and amounts */}
                     {membersList.length > 0 && (
                         <div className="mb-4.5">
                             <label className="mb-1 block text-black dark:text-white">Members:</label>
