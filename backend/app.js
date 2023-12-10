@@ -4,17 +4,17 @@ const passport = require("passport");
 const connectDb = require("../backend/config/mongoose");
 const multer = require("multer");
 const cors = require('cors');
-var corsOptions = {
-  origin: ['http://localhost:5173'],
-  methods : ['GET','POST','PUT,','DELETE'],
-  credentials : true
-}
+
 
 config({
   path: "./config/config.env",
 });
 connectDb();
-
+var corsOptions = {
+  origin: ['http://localhost:5173',process.env.FRONTEND_URL],
+  methods : ['GET','POST','PUT,','DELETE'],
+  credentials : true
+}
 const app = express();
 
 // *************middlewares*************
