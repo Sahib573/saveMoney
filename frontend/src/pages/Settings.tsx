@@ -3,10 +3,10 @@ import userThree from '../images/user/user-03.png';
 import fireToast from '../hooks/fireToast';
 import { Table } from "../components/TableSettings";
 import { Modal } from "../components/ModalSettings";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 const Settings = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [rows, setRows] = useState(localStorage.getItem("alertSettings")?JSON.parse(localStorage.getItem("alertSettings")):[]);
+  const [rows, setRows] = useState(localStorage.getItem("alertSettings") ? JSON.parse(localStorage.getItem("alertSettings")) : []);
   useEffect(() => {
     // storing input name
     localStorage.setItem("alertSettings", JSON.stringify(rows));
@@ -27,18 +27,18 @@ const Settings = () => {
     rowToEdit === null
       ? setRows([...rows, newRow])
       : setRows(
-          rows.map((currRow, idx) => {
-            if (idx !== rowToEdit) return currRow;
+        rows.map((currRow, idx) => {
+          if (idx !== rowToEdit) return currRow;
 
-            return newRow;
-          })
-        );
+          return newRow;
+        })
+      );
   };
 
   return (
     <>
       <div className="mx-auto max-w-270">
-        
+
         <Breadcrumb pageName="Settings" />
 
         <div className="grid grid-cols-5 gap-8">
@@ -220,7 +220,9 @@ const Settings = () => {
                         id="bio"
                         rows={6}
                         placeholder="Write your bio here"
-                        defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet."
+                        defaultValue="Greetings! 🌟 I'm David, a passionate individual navigating life's adventures. While I wear many hats, including student, one constant in my journey is the pursuit of a balanced and fulfilling life.
+
+                        Outside of work, you'll often find me listening folk songs.I've learned that by understanding and managing my resources, I can create the space to savor the things that truly matter."
                       ></textarea>
                     </div>
                   </div>
