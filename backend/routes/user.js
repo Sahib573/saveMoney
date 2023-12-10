@@ -17,8 +17,9 @@ router.post(
   userController.sendmail
 );
 router.post("/login", userController.login);
-router.post("/addfriend",userController.addfriend);
-router.post("/getFriends",userController.getFriends);
+router.post("/addfriend", userController.addfriend);
+router.post("/getFriends", userController.getFriends);
+router.post("/getProfile", userController.get_profile);
 const passport = require("passport");
 
 router.post(

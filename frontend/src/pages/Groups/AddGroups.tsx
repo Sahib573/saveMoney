@@ -5,7 +5,7 @@ interface Member {
     email: string;
 }
 
-const AddGroupForm = () => {
+const AddGroup = () => {
     const [groupName, setGroupName] = useState('');
     const [groupDescription, setGroupDescription] = useState('');
     const [totalExpense, setTotalExpense] = useState('');
@@ -124,14 +124,19 @@ const AddGroupForm = () => {
                             <ul>
                                 {membersList.map((member, index) => (
                                     <li key={index} className="flex items-center mb-2">
-                                        <span>{member.member}: {member.email}</span>
-                                        <button
-                                            type="button"
-                                            onClick={() => handleRemoveMember(index)}
-                                            className="ml-2 text-red-500 hover:text-red-700"
-                                        >
-                                            Remove
-                                        </button>
+                                        <div className="flex items-center mb-2">
+                                            <button
+                                                type="button"
+                                                onClick={() => handleRemoveMember(index)}
+                                                className="bg-primary px-2 py-1 text-white rounded-full hover:bg-primary-dark transition"
+                                                style={{ width: '2rem', height: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '0.5rem' }}
+                                            >
+                                                -
+                                            </button>
+                                            <span>{member.member}: {member.email}</span>
+                                        </div>
+
+
                                     </li>
                                 ))}
                             </ul>
@@ -167,4 +172,4 @@ const AddGroupForm = () => {
     );
 };
 
-export default AddGroupForm;
+export default AddGroup;
