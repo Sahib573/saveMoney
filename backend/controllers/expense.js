@@ -40,7 +40,7 @@ module.exports.all = async (req, res) => {
 
 module.exports.byDate = async (req, res) => {
     try {
-      let expenses = await Expense.find({ user_id: req.body._id ,created_at : req.body.date});
+      let expenses = await Expense.find({ user_id: req.body._id ,created_at : {$gte:new Date(req.body.date),$lt:new Date(req.body.lessthandate)}});
       if (!expenses) {
         return res.json.status(422).json({
           message: "No expense added yet.",

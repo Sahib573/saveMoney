@@ -15,6 +15,7 @@ const userSchema = mongoose.Schema(
     name: {
       type: String,
     },
+    moto:String, // to keep user conscious abt expenditures
     email: {
       type: String,
       required: true,
