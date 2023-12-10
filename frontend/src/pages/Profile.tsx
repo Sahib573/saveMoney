@@ -116,11 +116,15 @@ const Profile = () => {
                 About Me
               </h4>
               <p className="mt-4.5">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque posuere fermentum urna, eu condimentum mauris
-                tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus
-                ultricies. Sed vel aliquet libero. Nunc a augue fermentum,
-                pharetra ligula sed, aliquam lacus.
+                Greetings! 🌟 I'm Sahib, a passionate individual navigating life's adventures. While I wear many hats, including student, one constant in my journey is the pursuit of a balanced and fulfilling life.
+
+                Outside of work, you'll often find me listening folk songs. Whether it's immersing myself in a good book, exploring local trails, or experimenting with new recipes in the kitchen, I believe in embracing life's diverse experiences.
+
+                Finance, to me, is not just about numbers; it's about the freedom to make meaningful choices. I've learned that by understanding and managing my resources, I can create the space to savor the things that truly matter.
+
+                I'm a believer in the power of community and shared knowledge. Let's connect, share stories, and inspire each other on this journey of growth and self-discovery.
+
+                Here's to embracing the adventure of life!
               </p>
             </div>
 

@@ -132,7 +132,7 @@ module.exports.addfriend = async function (req, res) {
     if (!Friend) {
       return res.status(200).send("error in creating friend");
     }
-    const newFriend = { frind_id: Friend._id, name:Friend.name, email:Friend.email, contactNo:Friend.contactNo, address:Friend.address };
+    const newFriend = { frind_id: Friend._id, name: Friend.name, email: Friend.email, contactNo: Friend.contactNo, address: Friend.address };
     const friend_res = await User.findOne({ _id: req.body._id });
     if (friend_res) {
       for (let i = 0; i < friend_res.friends.length; i++) {
