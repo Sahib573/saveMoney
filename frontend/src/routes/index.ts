@@ -6,6 +6,7 @@ const About = lazy(() => import('../pages/About'));
 const FormElements = lazy(() => import('../pages/Form/FormElements'));
 const FormLayout = lazy(() => import('../pages/Form/FormLayout'));
 const Groups = lazy(() => import('../pages/Groups/Groups'));
+const AddGroup = lazy(() => import('../pages/Groups/AddGroups'));
 const Details = lazy(() => import('../pages/Groups/GroupDetail'));
 const Profile = lazy(() => import('../pages/Profile'));
 const Settings = lazy(() => import('../pages/Settings'));
@@ -35,6 +36,11 @@ const coreRoutes = [
     path: '/groups',
     title: 'Groups',
     component: Groups,
+  },
+  {
+    path: '/groups/addGroup',
+    title: 'New Group',
+    component: AddGroup,
   },
   {
     path: '/groups/:groupName',
@@ -75,12 +81,12 @@ const coreRoutes = [
     path: '/ui/buttons',
     title: 'Buttons',
     component: Buttons,
-  }, 
+  },
   {
     path: '/addTransaction',
     title: 'AddTransaction',
     component: AddTransaction,
-  },{
+  }, {
     path: '/friends',
     title: 'Friends',
     component: Friends,
